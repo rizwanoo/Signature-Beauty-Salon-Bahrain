@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --color-burgundy: #74384F;
+  --color-soft-rose: #D9A6B1;
+  --color-champagne: #C7A36A;
+  --color-logo-gold: #C8A544;
+  --color-dusty-mauve: #A987A5;
+  --color-warm-blush: #EBCBCB;
+  --color-warm-ivory: #FFF9F3;
+  --color-soft-cream: #F5EEE8;
+  --color-pale-rose: #F8E9E9;
+  --color-muted-beige: #E9DED3;
+  --color-deep-plum: #382834;
+  --color-warm-charcoal: #373235;
+}
+
+@layer base {
+  html {
+    background-color: #FFF9F3;
+    color: #373235;
+    font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: clip;
+    background-color: #FFF9F3;
+    color: #373235;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    text-wrap: balance;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #C7A36A;
+    outline-offset: 4px;
+  }
+}
+
+/* Borderless Editorial CTA System — Zero outlines, zero pills, zero boxes */
+.cta-editorial {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 0;
+  padding: 0.625rem 0;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  max-width: 100%;
+  flex-shrink: 0;
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 640px) {
+  .cta-editorial {
+    white-space: nowrap;
+  }
+}
+
+.cta-editorial::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.25rem;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0.38);
+  transform-origin: left center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-editorial:hover::after,
+.cta-editorial:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.cta-editorial .cta-arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-editorial:hover .cta-arrow,
+.cta-editorial:focus-visible .cta-arrow {
+  transform: translateX(5px);
+}
+
+/* Editorial nav link underline */
+.nav-link-editorial {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-link-editorial::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.2rem;
+  width: 100%;
+  height: 1px;
+  background-color: #C7A36A;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link-editorial:hover::after,
+.nav-link-editorial[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/* Image subtle editorial hover zoom */
+.editorial-image-frame {
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.editorial-image-frame img {
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.editorial-image-frame:hover img {
+  transform: scale(1.035);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .cta-editorial::after,
+  .cta-editorial .cta-arrow,
+  .nav-link-editorial::after,
+  .editorial-image-frame img {
+    transition: none !important;
+  }
+  .editorial-image-frame:hover img {
+    transform: none !important;
+  }
+}

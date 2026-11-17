@@ -1,0 +1,6 @@
+{
+  "name": "Signature Beauty Salon — Bahrain",
+  "description": "Signature Beauty Salon in Riffa Al Shamali, Bahrain — a relaxing, positive & motivational atmosphere offering facials, skincare, eyebrow threading, and bridal makeup.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
